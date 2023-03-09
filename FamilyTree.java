@@ -62,6 +62,9 @@ public class FamilyTree implements Iterable<Human> {
     public void sortByAge() {
         Collections.sort(humanList, new FamilyComparatorAge());
     }
+    public void sortByDataBirth() {
+        humanList.sort(new HumanComparaterDataBirth());
+    }
 
     @Override
     public Iterator<Human> iterator() {

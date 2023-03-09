@@ -31,7 +31,11 @@ public class Main {
         for (Human human : familyTree) {
             System.out.println(human);
         }
-
+        System.out.println("\n Сортировка по дате рождения");
+        familyTree.sortByDataBirth();
+        for (Human human : familyTree) {
+            System.out.println(human);
+        }
 
         // System.out.println(familyTree.getInfo());
 
