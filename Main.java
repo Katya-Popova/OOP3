@@ -25,7 +25,7 @@ public class Main {
         for (Human human : familyTree) {
             System.out.println(human);
         }
-        
+
         System.out.println("\n Сортировка по возрасту");
         familyTree.sortByAge();
         for (Human human : familyTree) {
@@ -37,11 +37,11 @@ public class Main {
             System.out.println(human);
         }
 
-        // System.out.println(familyTree.getInfo());
+        System.out.println(familyTree.getInfo());
 
-        // IO save = new IO();
-        // andrey.saveObj(save);
-        // save.load("Family.txt");
+        IO save = new IO();
+        andrey.saveObj(save);
+        save.load("Family.txt");
 
     }
 }
