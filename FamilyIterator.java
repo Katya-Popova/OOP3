@@ -1,4 +1,4 @@
-import java.util.Collections;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,6 +17,7 @@ public  class FamilyIterator implements Iterator<Human>{
     public Human next() {
         return humanList.get(index++);
     }
+
 
    
 }

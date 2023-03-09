@@ -1,12 +1,14 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree {
+public class FamilyTree implements Iterable<Human>{
     private List<Human> humanList;
         public FamilyTree() {
         this(new ArrayList<>());
     }
-
 
 
     public FamilyTree(List<Human> humanList){
@@ -41,27 +43,34 @@ public class FamilyTree {
     }
     
 
- 
     public String getInfo(){
         
         return humanList.toString();
 }
 
-
-
     public List<Human> getHumanList() {
         return humanList;
     }
-
-
 
     public void setHumanList(List<Human> humanList) {
         this.humanList = humanList;
     }
 
+
+
 public void sortByName(){
-    humanList.sort(new HumanComparatorByName());
+    Collections.sort(humanList);
 }
+
+public void sortByAge(){
+    Collections.sort(humanList, new FamilyComparatorAge());
+}
+@Override
+public Iterator<Human> iterator() {
+   
+    return humanList.iterator() ;
+}
+
 
 
 

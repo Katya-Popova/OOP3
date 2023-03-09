@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Human  implements Serializable{
+public class Human  implements Serializable, Comparable<Human>{
     private String name;
     private String patronymic;
     private String dateBirth;
@@ -12,9 +12,23 @@ public class Human  implements Serializable{
     private Human father;
     private Human mather;
     private List<Human> children;
+    private int age;
   
     
     
+    public int getAge() {
+        if (dateDeath !=null){
+            return (Integer.parseInt (dateDeath.trim ())-Integer.parseInt (dateBirth.trim ()));
+        }
+        else{
+        return 2023-Integer.parseInt (dateBirth.trim ());
+    }
+}
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public Human (String name,String patronymic, String dateBirth,Gender gender){
         this(name, patronymic, dateBirth, null,gender, null, null,null);
     }
@@ -28,6 +42,7 @@ public class Human  implements Serializable{
         this.father= father;
         this.mather=mather;
         children= new ArrayList<>();
+        
         }
 
         public boolean addChild (Human child){
@@ -168,5 +183,12 @@ public class Human  implements Serializable{
         save = new IO();
         save.save("FreeFamily.data", this);
     }
+
+    @Override
+    public int compareTo(Human o) {
+        return name.compareTo(o.name);
+    }
+
+
 
 }
