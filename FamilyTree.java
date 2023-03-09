@@ -4,28 +4,28 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Iterable<Human>{
+public class FamilyTree implements Iterable<Human> {
     private List<Human> humanList;
-        public FamilyTree() {
+
+    public FamilyTree() {
         this(new ArrayList<>());
     }
 
-
-    public FamilyTree(List<Human> humanList){
-        this.humanList= humanList;
+    public FamilyTree(List<Human> humanList) {
+        this.humanList = humanList;
 
     }
 
-    public boolean add(Human human){
-        if(human == null){
+    public boolean add(Human human) {
+        if (human == null) {
             return false;
         }
-        if (!humanList.contains(human)){
+        if (!humanList.contains(human)) {
             humanList.add(human);
-            if (human.getFather() !=null){
+            if (human.getFather() != null) {
                 human.getFather().addChild(human);
             }
-            if (human.getMather() != null){
+            if (human.getMather() != null) {
                 human.getMather().addChild(human);
             }
             return true;
@@ -33,20 +33,19 @@ public class FamilyTree implements Iterable<Human>{
         return false;
     }
 
-    public Human getByName(String name){
-        for(Human human: humanList){
-            if (human.getName().equals(name)){
+    public Human getByName(String name) {
+        for (Human human : humanList) {
+            if (human.getName().equals(name)) {
                 return human;
             }
         }
         return null;
     }
-    
 
-    public String getInfo(){
-        
+    public String getInfo() {
+
         return humanList.toString();
-}
+    }
 
     public List<Human> getHumanList() {
         return humanList;
@@ -56,22 +55,18 @@ public class FamilyTree implements Iterable<Human>{
         this.humanList = humanList;
     }
 
+    public void sortByName() {
+        Collections.sort(humanList);
+    }
 
+    public void sortByAge() {
+        Collections.sort(humanList, new FamilyComparatorAge());
+    }
 
-public void sortByName(){
-    Collections.sort(humanList);
-}
+    @Override
+    public Iterator<Human> iterator() {
 
-public void sortByAge(){
-    Collections.sort(humanList, new FamilyComparatorAge());
-}
-@Override
-public Iterator<Human> iterator() {
-   
-    return humanList.iterator() ;
-}
-
-
-
+        return humanList.iterator();
+    }
 
 }

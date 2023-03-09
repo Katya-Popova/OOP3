@@ -1,6 +1,5 @@
 import java.io.Serializable;
 
-public interface Loading
-{
+public interface Loading {
     Serializable load(String path);
 }
